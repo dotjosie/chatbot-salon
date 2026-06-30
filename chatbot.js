@@ -1354,7 +1354,7 @@ function renderTray(step) {
       skip.addEventListener('click', () => {
         appendUserBubble('Skip');
         clearTray();
-        setTimeout(() => renderStep('main_menu'), 350);
+        setTimeout(() => renderStep('sdq_style'), 350);
       });
       tray.appendChild(skip);
     }
@@ -1504,17 +1504,6 @@ function renderTray(step) {
       setTimeout(() => renderStep('sdq_result'), 350);
     });
     tray.appendChild(seeBtn);
-
-    const skip = document.createElement('button');
-    skip.className = 'meta-text meta-text--caption';
-    skip.style.cssText = 'cursor:pointer;background:none;border:none;padding:0;';
-    skip.textContent = 'Skip Question';
-    skip.addEventListener('click', () => {
-      appendUserBubble('Skip');
-      clearTray();
-      setTimeout(() => renderStep('sdq_result'), 350);
-    });
-    tray.appendChild(skip);
 
     return;
   }
@@ -2759,18 +2748,19 @@ function cardPrice(n) { return `$${n} UP`; }
 
 function computeSDQResult() {
   const keywords  = (session.sdqStyles || []).map(k => k.toLowerCase());
-  const colorOpen    = (session.sdqColorOpen    || 'no').toLowerCase();
-  const chemOpen     = (session.sdqChemicalOpen || 'no').toLowerCase();
+  // null means skipped — treat as no opinion (include everything, no filter)
+  const colorOpen    = session.sdqColorOpen    ? session.sdqColorOpen.toLowerCase()    : null;
+  const chemOpen     = session.sdqChemicalOpen ? session.sdqChemicalOpen.toLowerCase() : null;
   // Per-perm-type overrides from free text; fall back to button selection
-  const curlOpen     = (session.sdqCurlOpen     || chemOpen).toLowerCase();
-  const straightOpen = (session.sdqStraightOpen  || chemOpen).toLowerCase();
+  const curlOpen     = session.sdqCurlOpen     ? session.sdqCurlOpen.toLowerCase()     : chemOpen;
+  const straightOpen = session.sdqStraightOpen ? session.sdqStraightOpen.toLowerCase() : chemOpen;
 
   const results = [];
 
   for (const [svc, meta] of Object.entries(SDQ_SERVICES)) {
-    // Filter by what user is open to
-    if (meta.requiresColor       && colorOpen    === 'no') continue;
-    if (meta.requiresCurlPerm    && curlOpen     === 'no') continue;
+    // Filter by what user is open to — only filter if they explicitly said no
+    if (meta.requiresColor        && colorOpen    === 'no') continue;
+    if (meta.requiresCurlPerm     && curlOpen     === 'no') continue;
     if (meta.requiresStraightPerm && straightOpen === 'no') continue;
 
     // Score from keyword matches
