@@ -1512,7 +1512,7 @@ function renderTray(step) {
     skip.addEventListener('click', () => {
       appendUserBubble('Skip');
       clearTray();
-      setTimeout(() => renderStep('main_menu'), 350);
+      setTimeout(() => renderStep('sdq_result'), 350);
     });
     tray.appendChild(skip);
 
