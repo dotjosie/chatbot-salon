@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatbot Preview</title>
+  <link rel="stylesheet" href="https://use.typekit.net/zlb4skl.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      margin: 0;
+      background: #D0CEC9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    /* Override widget positioning — show inline, centered */
+    .chat-widget {
+      position: relative;
+      bottom: auto;
+      right: auto;
+      width: 390px;
+      height: 844px;
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
+    }
+    .chat-widget.is-open {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="chat-widget is-open" id="chat-widget" role="dialog" aria-label="Rosan Hair Studio chat">
+
+    <div class="app-header-bar" id="chat-header">
+      <button class="app-header-bar__back" id="header-back" style="visibility: hidden;" aria-label="Back">
+        <span class="app-header-bar__back-icon"><img src="images/icons/CaretLeft.svg" width="12" height="12" alt=""></span>
+        <span class="app-header-bar__back-label">Back</span>
+      </button>
+      <div class="app-header-bar__center">
+        <div class="app-header-bar__title" id="chat-title">Chat with Rosan Hair</div>
+        <div class="app-header-bar__subtitle" id="chat-subtitle"></div>
+      </div>
+      <div class="app-header-bar__step-counter" id="chat-step-counter" style="visibility:hidden;"></div>
+      <button class="app-header-bar__close js-close-chat" aria-label="Close chat">
+        <div class="app-header-bar__close-icon"><img src="images/icons/X.svg" width="24" height="24" alt=""></div>
+      </button>
+    </div>
+
+    <div class="chat-thread" id="chat-thread" role="log" aria-live="polite"></div>
+    <div class="chat-tray" id="chat-tray"></div>
+
+  </div>
+
+  <script src="flow-data.js"></script>
+  <script src="chatbot.js"></script>
+  <script>
+    // Auto-open on load
+    window.addEventListener('DOMContentLoaded', () => openChat());
+  </script>
+</body>
+</html>

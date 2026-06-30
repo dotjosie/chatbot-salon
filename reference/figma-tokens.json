@@ -1,0 +1,44 @@
+{
+  "colors": {
+    "bg-canvas":               "#E8E6E2",
+    "component-fill-primary":  "#FFFFFF",
+    "text-primary":            "#2B211D",
+    "text-secondary":          "#848180",
+    "text-disabled":           "#D5D3D2",
+    "button-border-primary":   "#5F5B4A",
+    "text-on-secondary-button":"#3E3B32",
+    "button-fill-secondary":   "#C9C7B5",
+    "border-card-action":      "#A8791F",
+    "divider":                 "#EAE9E8",
+    "input-fill":              "#F2F2F1",
+    "state-error":             "#B83929",
+    "state-fill":              "#F0BFB8",
+    "rust-backup":             "#7A3B32"
+  },
+  "spacing": {
+    "xs":  4,
+    "sm":  6,
+    "md":  8,
+    "lg":  12,
+    "xl":  16,
+    "2xl": 24
+  },
+  "borderRadius": {
+    "sm":   6,
+    "md":   10,
+    "btn":  20,
+    "pill": 200
+  },
+  "typography": {
+    "fontFamily": "'Proxima Nova'",
+    "scale": {
+      "display":     { "size": 32, "lineHeight": 38, "weight": 700, "use": "Hero moments, prominent screen headers" },
+      "heading":     { "size": 20, "lineHeight": 24, "weight": 600, "use": "Section titles, card headings" },
+      "body":        { "size": 18, "lineHeight": 22, "weight": 500, "use": "Chat messages, body copy" },
+      "body-medium": { "size": 18, "lineHeight": 22, "weight": 600, "use": "Emphasized body, input text" },
+      "label":       { "size": 16, "lineHeight": 20, "weight": 500, "use": "Button labels, header title, card labels" },
+      "caption":     { "size": 14, "lineHeight": 16, "weight": 400, "use": "Chips, estimate card, secondary info" },
+      "micro":       { "size": 12, "lineHeight": 14, "weight": 400, "use": "Timestamps, back label, counter, fine print" }
+    }
+  }
+}

@@ -1,0 +1,3596 @@
+/* ─── Design Tokens ─────────────────────────────────────────────────────────── */
+:root {
+  --bg-canvas:          #E8E6E2;
+  --fill-primary:       #FFFFFF;
+  --text-primary:       #2B211D;
+  --text-secondary:     #848180;
+  --text-disabled:      #D5D3D2;
+  --btn-border:         #5F5B4A;
+  --text-on-sage:       #3E3B32;
+  --btn-fill-sage:      #C9C7B5;
+  --border-action:      #A8791F;
+  --divider:            #EAE9E8;
+  --border-bubble:      #878272;
+  --border-tray:        #C7C7C7;
+  --rust:               #7A3B32;
+  --text-on-rust:       #E8E6E2;
+  --input-fill:         #F2F2F1;
+  --state-error:        #B83929;
+  --state-fill:         #F0BFB8;
+
+  --space-xs:  4px;
+  --space-sm:  6px;
+  --space-md:  8px;
+  --space-lg:  12px;
+  --space-xl:  16px;
+  --space-2xl: 24px;
+
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-btn:  200px;
+  --radius-pill: 200px;
+
+  --font: 'proxima-nova', 'Proxima Nova', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+
+  /* ── Type scale ── */
+  --fs-display:      32px;  --lh-display:      38px;
+  --fs-heading:      20px;  --lh-heading:      24px;
+  --fs-body:         18px;  --lh-body:         22px;  --fw-body:         500;
+  --fs-body-medium:  18px;  --lh-body-medium:  22px;  --fw-body-medium:  600;
+  --fs-label:        16px;  --lh-label:        20px;
+  --fs-caption:      14px;  --lh-caption:      16px;
+  --fs-micro:        12px;  --lh-micro:        14px;
+}
+
+/* ─── Icons ─────────────────────────────────────────────────────────────────── */
+/* Source: /chatbox/images/icons/ — contact, about, about us, service menu,
+   stylists, salon products, Sparkle, Question, ThumbsUp, Booking, Info      */
+.icon {
+  display: inline-block;
+  flex-shrink: 0;
+  color: var(--text-primary);
+}
+.icon img,
+.icon svg {
+  display: block;
+  /* SVG files must use currentColor on fill/stroke paths for tinting to work */
+  color: var(--text-primary);
+  fill: var(--text-primary);
+}
+
+/* ─── Reset ─────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font); color: var(--text-primary); background: #fff; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+button { font-family: var(--font); cursor: pointer; border: none; background: none; }
+
+/* ─── Site Header ───────────────────────────────────────────────────────────── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fff;
+  border-bottom: 1px solid var(--divider);
+}
+.site-header__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--space-2xl);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.site-logo { font-size: 16px; font-weight: 600; }
+.site-nav { display: flex; gap: var(--space-2xl); font-size: 14px; color: var(--text-secondary); }
+.site-nav a:hover { color: var(--text-primary); }
+.nav-book {
+  padding: 6px 16px;
+  border: 1px solid var(--border-action);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-weight: 500;
+}
+.nav-book:hover { background: var(--bg-canvas); }
+
+/* ─── Hero ──────────────────────────────────────────────────────────────────── */
+.hero { background: var(--bg-canvas); padding: 96px var(--space-2xl); }
+.hero__inner { max-width: 560px; margin: 0 auto; text-align: center; }
+.hero__title { font-size: 40px; font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
+.hero__sub { font-size: 16px; color: var(--text-secondary); margin-bottom: 32px; line-height: 1.7; }
+.btn-site-primary {
+  display: inline-block;
+  padding: 14px 28px;
+  background: var(--text-primary);
+  color: #fff;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 500;
+  transition: opacity 0.15s;
+  cursor: pointer;
+}
+.btn-site-primary:hover { opacity: 0.85; }
+
+/* ─── Services Section ──────────────────────────────────────────────────────── */
+.services-section { padding: 72px var(--space-2xl); }
+.services-section__inner { max-width: 1100px; margin: 0 auto; }
+.services-section__heading { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
+.services-section__note { font-size: 13px; color: var(--text-secondary); margin-bottom: 32px; line-height: 1.5; }
+.service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.service-card {
+  border: 1px solid var(--divider);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.service-card__icon { font-size: 22px; }
+.service-card__name { font-size: 16px; font-weight: 600; }
+.service-card__desc { font-size: 13px; color: var(--text-secondary); line-height: 1.5; flex: 1; }
+.service-card__price { font-size: 13px; color: var(--text-secondary); font-style: italic; margin-top: 8px; }
+
+/* ─── Footer ────────────────────────────────────────────────────────────────── */
+.site-footer {
+  padding: 24px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-secondary);
+  border-top: 1px solid var(--divider);
+}
+.site-footer a { text-decoration: underline; }
+
+/* ─── Chat Launcher ─────────────────────────────────────────────────────────── */
+.chat-launcher {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: var(--text-primary);
+  color: #fff;
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+  transition: opacity 0.15s, transform 0.2s;
+}
+.chat-launcher:hover { opacity: 0.88; }
+.chat-launcher.is-hidden { opacity: 0; pointer-events: none; transform: scale(0.9); }
+
+/* ─── Chat Widget ───────────────────────────────────────────────────────────── */
+/* Scroll-for-more hint — floats above tray when thread overflows */
+.scroll-hint {
+  position: absolute;
+  bottom: var(--tray-height, 120px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text-primary);
+  color: var(--fill-primary);
+  font-family: proxima-nova, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 20px;
+  pointer-events: none;
+  opacity: 0.85;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.chat-widget {
+  position: fixed;
+  bottom: 24px;
+  top: 72px;
+  right: 24px;
+  width: 390px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  background: var(--fill-primary);
+  border-radius: 16px;
+  box-shadow: 0 8px 48px rgba(0,0,0,0.18);
+  z-index: 99;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.chat-widget.is-open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* ─── App HeaderBar Component (Figma: App Header Bar set 222:45) ─────────────
+   Two variants: Standard (white bg) and WithProgress (sage bg + step counter).
+   Both: 56px tall, 1px #848180 bottom border, full width.
+
+   Layout: [58px back zone] [flex:1 title+subtitle center] [44px? counter] [44px close zone]
+   Back zone:  12px chevron icon + "Back" 12px/500/16px, text-primary.
+   Title:      16px/600/22px, text-primary, centered.
+   Subtitle:   12px/500/16px, text-secondary, centered.
+   Counter:    "1/5" 12px/500/16px, secondary — WithProgress only.
+   Close zone: 24×24 icon, text-primary fill.
+─────────────────────────────────────────────────────────────────────────── */
+.app-header-bar {
+  width: 100%;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--text-secondary);
+  flex-shrink: 0;
+  background: var(--fill-primary);
+}
+
+/* WithProgress variant — sage bg */
+.app-header-bar--progress {
+  background: var(--btn-fill-sage);
+}
+
+/* Back zone — 58px, chevron + "Back" label */
+.app-header-bar__back {
+  width: 58px;
+  align-self: stretch;
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  overflow: hidden;
+}
+.app-header-bar__back:hover { opacity: 0.75; }
+
+.app-header-bar__back-icon {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.app-header-bar__back-icon img,
+.app-header-bar__back-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--text-primary);
+  color: var(--text-primary);
+  display: block;
+}
+
+.app-header-bar__back-label {
+  flex: 1;
+  font-family: var(--font);
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  line-height: var(--lh-micro);
+  color: var(--text-primary);
+  word-wrap: break-word;
+}
+
+/* Center — title + subtitle, both centered */
+.app-header-bar__center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.app-header-bar__title {
+  width: 100%;
+  text-align: center;
+  font-family: var(--font);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  line-height: var(--lh-label);
+  color: var(--text-primary);
+  word-wrap: break-word;
+}
+
+.app-header-bar__subtitle {
+  width: 100%;
+  text-align: center;
+  font-family: var(--font);
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  line-height: var(--lh-micro);
+  color: var(--text-secondary);
+  word-wrap: break-word;
+}
+
+/* Step counter — "1/5", WithProgress only, 44px zone */
+.app-header-bar__counter {
+  width: 44px;
+  height: 56px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font);
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  line-height: var(--lh-micro);
+  color: var(--text-secondary);
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Close/action zone — 44px, 24×24 icon */
+.app-header-bar__step-counter {
+  font-family: var(--font);
+  font-size: var(--fs-micro);
+  font-weight: 400;
+  line-height: var(--lh-micro);
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  margin-right: 4px;
+}
+
+.app-header-bar__close {
+  width: 44px;
+  align-self: stretch;
+  padding: 0 4px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  overflow: hidden;
+}
+.app-header-bar__close:hover { opacity: 0.75; }
+
+.app-header-bar__close-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.app-header-bar__close-icon img,
+.app-header-bar__close-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--text-primary);
+  color: var(--text-primary);
+  display: block;
+}
+
+
+/* ─── Thread ────────────────────────────────────────────────────────────────── */
+.chat-thread {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 12px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  scroll-behavior: smooth;
+  background: var(--bg-canvas);
+}
+/* Spacer pushes messages to the bottom — matches Figma thread layout */
+.chat-thread__spacer {
+  flex: 1;
+  min-height: 0;
+}
+.chat-thread::-webkit-scrollbar { width: 4px; }
+.chat-thread::-webkit-scrollbar-track { background: transparent; }
+.chat-thread::-webkit-scrollbar-thumb { background: var(--divider); border-radius: 4px; }
+
+/* ─── Message Bubble Component (Figma: MessageBubble set 153:6) ─────────────
+   Bot:  white bg, 1px #878272 border, 20px radius — bordered = read-only bot
+   User: sage (#C9C7B5) bg, no border, 20px radius — no border per design rule
+   Both: 12px h-pad, 8px v-pad, 14px/400/20px type, text-primary (#2B211D)
+─────────────────────────────────────────────────────────────────────────── */
+.bubble {
+  max-width: 82%;
+  padding: 10px 14px;
+  border-radius: 20px;
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-body);
+  word-break: break-word;
+  white-space: pre-line;
+  color: var(--text-primary);
+}
+.bubble--bot {
+  background: var(--fill-primary);
+  border: 1px solid var(--border-bubble);
+  align-self: flex-start;
+  white-space: pre-line;
+}
+.bubble--user {
+  background: var(--btn-fill-sage);
+  border: none;
+  align-self: flex-end;
+}
+
+/* ─── Estimate Card ─────────────────────────────────────────────────────────── */
+.estimate-card {
+  align-self: flex-start;
+  width: calc(100% - 0px);
+  max-width: 340px;
+  background: var(--fill-primary);
+  border: 1px solid var(--border-action);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  font-size: var(--fs-caption);
+}
+.estimate-card__tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.estimate-card__tag {
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-canvas);
+  color: var(--text-secondary);
+}
+.estimate-card__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--divider);
+  color: var(--text-primary);
+}
+.estimate-card__row:last-of-type { border-bottom: none; }
+.estimate-card__row--total {
+  font-weight: 600;
+  border-top: 1px solid var(--divider);
+  padding-top: 8px;
+  margin-top: 2px;
+  border-bottom: none;
+}
+.estimate-card__price { font-weight: 500; white-space: nowrap; padding-left: 12px; }
+.estimate-card__note {
+  font-size: var(--fs-micro);
+  line-height: var(--lh-micro);
+  color: var(--text-secondary);
+  margin-top: 8px;
+}
+
+/* ─── Action Tray Shell (Figma: ActionTrayShell 222:50) ─────────────────────
+   White bg. Padding: 0 top, 24px bottom, 12px left/right. Column, gap 12px.
+   Top divider: 1px #C7C7C7 line flush to the top edge (no top padding above it).
+   Content slots (buttons, chips, input) flow below the divider with 12px gap.
+
+   .tray-btn-row  — horizontal row of equal-width buttons, gap 8px.
+   .tray-choices  — vertical stack of full-width choice buttons, gap 6px.
+─────────────────────────────────────────────────────────────────────────── */
+.chat-tray {
+  padding: 0 12px 24px;
+  background: var(--fill-primary);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+  transition: height 0.25s ease, padding 0.25s ease;
+}
+
+.chat-tray--collapsed {
+  height: 58px !important;
+  padding-top: 0;
+  padding-bottom: 0;
+  cursor: pointer;
+  overflow: hidden;
+  justify-content: center;
+}
+
+.chat-tray__collapse-bar {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 58px;
+  flex-shrink: 0;
+}
+
+.chat-tray--collapsed .chat-tray__collapse-bar {
+  display: flex;
+}
+
+.chat-tray--collapsed > *:not(.chat-tray__collapse-bar) {
+  display: none !important;
+}
+
+/* Divider — sits flush at top of tray, full width, 1px #C7C7C7 */
+.chat-tray__divider {
+  align-self: stretch;
+  height: 1px;
+  background: var(--border-tray);
+  flex-shrink: 0;
+}
+
+/* Horizontal button row — equal-width siblings, gap 8px */
+.tray-btn-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  overflow: hidden;
+}
+.tray-btn-row .btn-component { flex: 1; }
+
+/* Vertical choice stack */
+.tray-choices { display: flex; flex-direction: column; gap: 6px; }
+
+/* 3-column menu card grid */
+.tray-menu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+}
+
+.tray-quiz-prompt {
+  width: 100%;
+  padding: 8px 12px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  line-height: var(--lh-label);
+  color: var(--text-primary);
+  text-align: center;
+}
+.tray-quiz-prompt__icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tray-quiz-prompt__icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.tray-quiz-prompt__underline { text-decoration: underline; }
+
+/* ─── Buttons ───────────────────────────────────────────────────────────────── */
+.btn {
+  width: 100%;
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  font-family: var(--font);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  line-height: var(--lh-label);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.btn:hover { opacity: 0.82; }
+.btn-sublabel { font-size: var(--fs-micro); line-height: var(--lh-micro); color: var(--text-secondary); white-space: nowrap; padding-left: 8px; font-weight: 400; }
+
+/* Resting choice — gold border, white fill — tappable options not yet selected */
+.btn--choice {
+  background: var(--fill-primary);
+  border: 1px solid var(--border-action);
+  color: var(--text-primary);
+}
+
+/* Non-editorial — outline only, no hierarchy — equal-weight options */
+.btn--neutral {
+  background: transparent;
+  border: 1px solid var(--border-tray);
+  color: var(--text-secondary);
+}
+.btn--neutral:hover { color: var(--text-primary); border-color: var(--text-secondary); }
+
+/* Rust / advanced CTA — single-path action (matches Figma Button "advanced" state) */
+.btn--action {
+  background: var(--rust);
+  border: 1px solid var(--rust);
+  color: var(--text-on-rust);
+}
+
+/* Selected state — sage fill (matches Figma Button "Focused" / LabelButton "Focused") */
+.btn--selected {
+  background: var(--btn-fill-sage);
+  border: 1px solid var(--btn-border);
+  color: var(--text-on-sage);
+}
+
+/* ─── Pill chips (LabelButton) — short quick-reply options ──────────────────── */
+.tray-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+/* Resting chip: gold border — matches Figma LabelButton "secondary" state */
+.btn--chip {
+  width: auto;
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font);
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  font-weight: 500;
+  background: var(--fill-primary);
+  border: 1px solid var(--border-action);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: opacity 0.15s;
+  letter-spacing: -0.02em;
+}
+.btn--chip:hover { opacity: 0.82; }
+
+/* ─── InputField Component (Figma: InputField set 158:14) ───────────────────
+   3 states: Default, Focused, Filled.
+   Container: 40px tall, 20px radius, 12px left / 8px right pad, 8px v-pad.
+   Inner text has 4px extra left pad. Send button: 36×24px pill, white ↑.
+
+   Default → #F2F2F1 bg, 1px border,   placeholder #D5D3D2, send bg #D5D3D2
+   Focused → white bg,  1.5px border,  caret visible,        send bg #C9C7B5
+   Filled  → white bg,  1.5px border,  text #2B211D,         send bg #C9C7B5
+─────────────────────────────────────────────────────────────────────────── */
+/* Input field pill — send button lives inside */
+.tray-input-row {
+  width: 100%;
+  padding: 8px;
+  background: #F2F2F1;
+  border-radius: 200px;
+  outline: 1px solid #878272;
+  outline-offset: -1px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-sizing: border-box;
+  transition: outline-color 0.15s;
+}
+.tray-input-row:focus-within {
+  outline-color: var(--border-action);
+  background: var(--fill-primary);
+}
+
+.tray-input {
+  flex: 1 1 0;
+  padding: 12px 0 12px 4px;
+  border: none;
+  background: transparent;
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-body);
+  color: var(--text-primary);
+  outline: none;
+  min-width: 0;
+}
+.tray-input::placeholder {
+  color: #D5D3D2;
+}
+
+/* Send button — 70px wide, full-height pill */
+.tray-send {
+  width: 70px;
+  align-self: stretch;
+  flex-shrink: 0;
+  border-radius: 20px;
+  border: none;
+  background: #D5D3D2;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s;
+  overflow: hidden;
+}
+/* Activate send button when input has content */
+.tray-input:not(:placeholder-shown) ~ .tray-send,
+.tray-input:focus ~ .tray-send {
+  background: var(--btn-fill-sage);
+}
+.tray-send:hover { opacity: 0.85; }
+.tray-send img { filter: brightness(0) invert(1); }
+
+/* Back micro-link */
+.tray-back {
+  font-size: 10px;
+  color: var(--text-disabled);
+  cursor: pointer;
+  padding: 2px 0;
+  text-align: left;
+  transition: color 0.15s;
+}
+.tray-back:hover { color: var(--text-secondary); }
+
+/* ─── Typing Indicator ──────────────────────────────────────────────────────── */
+/* Matches bot bubble: white fill + border */
+.typing-indicator {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding: 10px var(--space-lg);
+  background: var(--fill-primary);
+  border: 1px solid var(--border-bubble);
+  border-radius: var(--radius-md);
+  align-self: flex-start;
+  width: 52px;
+}
+.typing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-secondary);
+  animation: bounce 1.2s infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes bounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-5px); }
+}
+
+
+/* ─── Treatment Cards (shown in thread for add-on selection) ─────────────────── */
+.treatment-card {
+  align-self: flex-start;
+  width: calc(100% - 0px);
+  max-width: 340px;
+  background: var(--fill-primary);
+  border: 1px solid var(--border-action);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.treatment-card:hover { opacity: 0.85; }
+.treatment-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 3px;
+}
+.treatment-card__name { font-size: 14px; font-weight: 500; color: var(--text-primary); }
+.treatment-card__price { font-size: 14px; font-weight: 500; color: var(--text-primary); white-space: nowrap; padding-left: 8px; }
+.treatment-card__bundle { font-size: 11px; color: var(--text-secondary); margin-bottom: 4px; }
+.treatment-card__desc { font-size: 12px; color: var(--text-secondary); }
+
+/* Decide Later link in tray */
+.tray-decide-later {
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-align: center;
+  width: 100%;
+  padding: 6px 0;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+/* ─── Meta-text Component ────────────────────────────────────────────────────
+   Centered secondary text — used for "Back", navigation hints, soft links.
+   No bg, no border. 14px/400/20px, text-secondary (#848180).
+─────────────────────────────────────────────────────────────────────────── */
+/* ─── Meta-Text Component ─────────────────────────────────────────────────────
+   Two states only:
+   .meta-text--body    → Typography/Body    (18px / 22px / 500)
+   .meta-text--caption → Typography/Caption (14px / 16px / 400)
+   Both always render in Text/Secondary. No other variants exist.
+   ─────────────────────────────────────────────────────────────────────────── */
+.meta-text {
+  font-family: var(--font);
+  color: var(--text-secondary);
+  word-wrap: break-word;
+  text-align: center;
+}
+
+.meta-text--body {
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-body);
+}
+
+.meta-text--caption {
+  font-size: var(--fs-caption);
+  font-weight: 400;
+  line-height: var(--lh-caption);
+}
+
+/* ─── BookingSummaryCard Component (Figma: BookingSummaryCard 165:33) ────────
+   White bg, 1px gold (#A8791F) border, 10px radius, 16px padding, gap 12px.
+   Header: "Booking Summary" 16px/600/22px Proxima Nova, text-primary.
+   Divider: 1px #C7C7C7.
+   Rows: label (12px/500/16px, text-secondary) + value (14px/400/20px,
+         text-primary), space-between.
+   Two variants — appointment (Service/Stylist/Date/Time) and contact (Name/Phone).
+   Same structure, different row content.
+─────────────────────────────────────────────────────────────────────────── */
+.booking-summary-card {
+  background: var(--fill-primary);
+  border: 1px solid var(--border-action);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+}
+
+.booking-summary-card__title {
+  font-family: var(--font);
+  font-size: var(--fs-heading);
+  font-weight: 600;
+  line-height: var(--lh-heading);
+  color: var(--text-primary);
+  word-wrap: break-word;
+  width: 100%;
+}
+
+.booking-summary-card__divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border-tray);
+  flex-shrink: 0;
+}
+
+.booking-summary-card__rows {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.booking-summary-card__row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Label — caption/400, secondary */
+.booking-summary-card__label {
+  font-family: var(--font);
+  font-size: var(--fs-caption);
+  font-weight: 400;
+  line-height: var(--lh-caption);
+  color: var(--text-secondary);
+  word-wrap: break-word;
+  flex-shrink: 0;
+}
+
+/* Value — body/500, primary */
+.booking-summary-card__value {
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-body);
+  color: var(--text-primary);
+  text-align: right;
+  word-wrap: break-word;
+  padding-left: 12px;
+}
+
+/* ─── StylistDropdownCard Component (Figma: StylistDropdownCard 169:33) ─────
+   White bg, 10px radius, no border. Padding: 16px top/left/right, 8px bottom.
+   Column layout, gap 16px. Bottom drag handle: 42×3px sage pill.
+   All text: Proxima Nova (Figma shows Archivo for metadata — overridden to PN).
+─────────────────────────────────────────────────────────────────────────── */
+.stylist-dropdown-card {
+  background: var(--fill-primary);
+  border-radius: var(--radius-md);
+  padding: 16px 16px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+}
+
+/* Top info section — avatar + name/badge, bio, photo strip */
+.stylist-dropdown-card__info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Header row — avatar + name/badge */
+.stylist-dropdown-card__header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  overflow: hidden;
+}
+
+.stylist-dropdown-card__avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 9999px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.stylist-dropdown-card__identity {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow: hidden;
+}
+
+.stylist-dropdown-card__name {
+  font-family: var(--font);
+  font-size: var(--fs-heading);
+  font-weight: 600;
+  line-height: var(--lh-heading);
+  color: var(--text-primary);
+  word-wrap: break-word;
+}
+
+/* Badge pill — canvas bg, secondary text, label size */
+.stylist-dropdown-card__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 8px;
+  background: var(--bg-canvas);
+  border-radius: var(--radius-pill);
+  font-family: var(--font);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  line-height: var(--lh-label);
+  color: var(--text-secondary);
+  word-wrap: break-word;
+  white-space: nowrap;
+}
+
+/* Bio — body/500, secondary */
+.stylist-dropdown-card__bio {
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-body);
+  color: var(--text-secondary);
+  word-wrap: break-word;
+  width: 100%;
+}
+
+/* Photo strip — 3 images + overflow tile */
+.stylist-dropdown-card__photos {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.stylist-dropdown-card__photo {
+  width: 140px;
+  height: 140px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Overflow count tile — sage bg, white text, same size as photos */
+.stylist-dropdown-card__overflow {
+  width: 140px;
+  height: 140px;
+  flex-shrink: 0;
+  border-radius: var(--radius-md);
+  background: var(--btn-fill-sage);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font);
+  font-size: var(--fs-micro);
+  font-weight: 600;
+  line-height: var(--lh-micro);
+  color: var(--fill-primary);
+}
+
+/* Action stack — two full-width stacked buttons */
+.stylist-dropdown-card__actions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Primary action — sage bg, olive border, dark-sage text, body size */
+.stylist-dropdown-card__action-primary {
+  width: 100%;
+  padding: 20px 18px;
+  background: var(--btn-fill-sage);
+  border: 1px solid var(--border-bubble);
+  border-radius: var(--radius-btn);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-body);
+  color: var(--text-on-sage);
+  cursor: pointer;
+  transition: opacity 0.15s;
+  text-align: center;
+  overflow: hidden;
+}
+.stylist-dropdown-card__action-primary:hover { opacity: 0.82; }
+
+/* Secondary action — white bg, divider border, primary text, body size */
+.stylist-dropdown-card__action-secondary {
+  width: 100%;
+  padding: 20px 18px;
+  background: var(--fill-primary);
+  border: 1px solid var(--border-tray);
+  border-radius: var(--radius-btn);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-body);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: opacity 0.15s;
+  overflow: hidden;
+}
+.stylist-dropdown-card__action-secondary:hover { opacity: 0.82; }
+
+/* Drag handle — 42×3px sage pill, centered */
+.stylist-dropdown-card__handle {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  cursor: pointer;
+}
+.stylist-dropdown-card__handle::after {
+  content: '';
+  width: 42px;
+  height: 3px;
+  background: var(--btn-fill-sage);
+  border-radius: var(--radius-pill);
+  display: block;
+}
+
+/* Horizontal swipeable card strip — used for About cards, etc. */
+.card-strip-scroller {
+  overflow-x: auto;
+  overflow-y: clip;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  width: 100%;
+}
+.card-strip-scroller::-webkit-scrollbar { display: none; }
+.card-strip {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+}
+.card-strip .description-card {
+  min-width: 296px;
+  width: 296px;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+/* ─── DescriptionCard Component ─────────────────────────────────────────────
+   Spec: white bg, 1px #A8791F outline, 10px radius, 12px padding, gap 16px.
+   Inner body: flex-col, align-items center, gap 12px.
+   Text block: flex-col, align-items flex-start, gap 4px.
+   Title: 16px/600/24px Archivo #2B211D. Desc: 12px/400/18px Archivo #848180.
+   Image: 199×199px fixed, 10px radius, centered.
+─────────────────────────────────────────────────────────────────────────── */
+.description-card {
+  background: white;
+  outline: 1px solid #A8791F;
+  outline-offset: -1px;
+  border-radius: 10px;
+  padding: 14px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.description-card__body {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+}
+
+.description-card__text {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.description-card__title-wrap {
+  align-self: stretch;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.description-card__title {
+  align-self: stretch;
+  color: var(--text-primary);
+  font-family: var(--font);
+  font-size: var(--fs-heading);
+  font-weight: 600;
+  line-height: var(--lh-heading);
+  word-wrap: break-word;
+}
+
+.description-card__desc {
+  align-self: stretch;
+  color: var(--text-secondary);
+  font-family: var(--font);
+  font-size: var(--fs-label);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-label);
+  word-wrap: break-word;
+}
+
+.description-card__image {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* ─── ServiceCard Component ──────────────────────────────────────────────────
+   White bg, 1px gold border, 10px radius, 12px padding, gap 6px.
+   Category label: 11px/400/15px, text-secondary (all caps in content).
+   Price rows: size label (14px/500/20px, text-primary) + price (14px/400/20px,
+   text-secondary), space-between.
+─────────────────────────────────────────────────────────────────────────── */
+.service-card-component {
+  background: #FFFFFF;
+  outline: 1px solid #A8791F;
+  outline-offset: -1px;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 6px;
+  width: 100%;
+}
+
+/* Category label — e.g. "REFINED (Mid-level Stylists)" */
+.service-card-component__category {
+  align-self: stretch;
+  font-family: var(--font);
+  font-size: var(--fs-caption);
+  font-weight: 400;
+  line-height: var(--lh-caption);
+  color: var(--text-secondary);
+  word-wrap: break-word;
+}
+
+/* Price row — size name + price, space-between */
+.service-card-component__row {
+  align-self: stretch;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+
+.service-card-component__size {
+  font-family: var(--font);
+  font-size: var(--fs-body-medium);
+  font-weight: var(--fw-body-medium);
+  line-height: var(--lh-body-medium);
+  color: var(--text-primary);
+  word-wrap: break-word;
+}
+
+.service-card-component__price {
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-body);
+  color: var(--text-secondary);
+  text-align: right;
+  word-wrap: break-word;
+}
+
+/* ─── AddOnCard Component ────────────────────────────────────────────────────
+   White bg, 1px gold border, 10px radius, 12px padding, gap 8px.
+   Header row: name (14px/500/20px, primary) + plus icon + price (14px/500/20px, primary).
+   Bundle label: 10px/400/14px, secondary.
+   Tag line: 12px/500/16px, secondary.
+─────────────────────────────────────────────────────────────────────────── */
+.addon-card {
+  background: var(--fill-primary);
+  outline: 1px solid var(--border-action);
+  outline-offset: -1px;
+  border-radius: var(--radius-md);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+
+/* Top block — name/price row + bundle label, no gap (flush together) */
+.addon-card__top {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.addon-card__header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+
+.addon-card__name {
+  flex: 1;
+  font-family: var(--font);
+  font-size: var(--fs-body-medium);
+  font-weight: var(--fw-body-medium);
+  line-height: var(--lh-body-medium);
+  color: var(--text-primary);
+  word-wrap: break-word;
+}
+
+/* Price group — plus icon + price value */
+.addon-card__price-group {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+/* Plus icon — 10×10px rendered as text '+' in primary color */
+.addon-card__plus {
+  width: 10px;
+  height: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.addon-card__price {
+  font-family: var(--font);
+  font-size: var(--fs-body-medium);
+  font-weight: var(--fw-body-medium);
+  line-height: var(--lh-body-medium);
+  color: var(--text-primary);
+  text-align: right;
+  word-wrap: break-word;
+}
+
+/* Bundle label — 12px/400/14px, secondary */
+.addon-card__bundle {
+  font-family: var(--font);
+  font-size: var(--fs-micro);
+  font-weight: 400;
+  line-height: var(--lh-micro);
+  color: var(--text-secondary);
+  word-wrap: break-word;
+  width: 100%;
+}
+
+/* Tag line — 16px/500/20px, secondary */
+.addon-card__tags {
+  font-family: var(--font);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  line-height: var(--lh-label);
+  color: var(--text-secondary);
+  word-wrap: break-word;
+  width: 100%;
+}
+
+/* ─── EstimatePricingCard Component ─────────────────────────────────────────
+   White bg, 1px gold border, 10px radius, 12px padding, column flex.
+   Tag chips: wrapping flex, gap 8px, 4px pad, input-fill bg, 10px radius,
+              14px/500/20px secondary text.
+   4px spacer between chips and rows.
+   Price rows: 44px tall, tier name (14px/500/20px) + price (16px/600/22px),
+               separated by 1px #C7C7C7 dividers.
+   Surcharge row: note text (11px/400/15px) + amount (16px/600/22px).
+   6px spacer then footer note: 11px/400/15px, secondary.
+─────────────────────────────────────────────────────────────────────────── */
+.estimate-pricing-card {
+  background: var(--fill-primary);
+  border: 1px solid var(--border-action);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* Tag chip row — wrapping */
+.estimate-pricing-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+
+.estimate-pricing-card__tag {
+  padding: 4px;
+  background: var(--input-fill);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  line-height: var(--lh-label);
+  color: var(--text-secondary);
+  word-wrap: break-word;
+}
+
+/* 4px spacer between tags and rows */
+.estimate-pricing-card__spacer-sm { height: 4px; width: 100%; }
+
+/* Rows container */
+.estimate-pricing-card__rows {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Each price row — 44px tall, space-between */
+.estimate-pricing-card__row {
+  width: 100%;
+  height: 44px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* Tier / label — 18px/600/22px, primary */
+.estimate-pricing-card__tier {
+  font-family: var(--font);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+  color: var(--text-primary);
+  word-wrap: break-word;
+}
+
+/* Surcharge note — 14px/400/16px, primary */
+.estimate-pricing-card__note {
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  color: var(--text-primary);
+  word-wrap: break-word;
+}
+
+/* Price value — 20px/600/24px, primary */
+.estimate-pricing-card__price {
+  font-family: var(--font);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--text-primary);
+  text-align: right;
+  word-wrap: break-word;
+  flex-shrink: 0;
+  padding-left: 8px;
+}
+
+/* Divider between rows */
+.estimate-pricing-card__divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border-tray);
+  flex-shrink: 0;
+}
+
+/* 6px spacer before footer note */
+.estimate-pricing-card__spacer-md { height: 6px; width: 100%; }
+
+/* Footer disclaimer — 14px/400/16px, secondary */
+.estimate-pricing-card__footer {
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  color: var(--text-secondary);
+  word-wrap: break-word;
+  width: 100%;
+}
+
+/* ─── SwatchCard Component ───────────────────────────────────────────────────
+   1px gold border, 10px radius, no padding on container (image fills to edge).
+   Image: full width, 76px tall, object-fit cover.
+   Label: 6px h-pad, 5px v-pad, white bg, 12px/500/16px centered, text-primary.
+─────────────────────────────────────────────────────────────────────────── */
+.swatch-card {
+  background: white;
+  border-radius: 10px;
+  outline: 1px solid var(--border-action);
+  outline-offset: -1px;
+  padding-right: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.swatch-card__text {
+  flex: 1 1 0;
+  overflow: hidden;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px 18px;
+  gap: 4px;
+}
+
+.swatch-card__title {
+  font-family: var(--font);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  line-height: var(--lh-label);
+  color: var(--text-primary);
+  word-wrap: break-word;
+}
+
+.swatch-card__desc {
+  align-self: stretch;
+  font-family: var(--font);
+  font-size: var(--fs-caption);
+  font-weight: 400;
+  line-height: var(--lh-caption);
+  color: var(--text-secondary);
+  word-wrap: break-word;
+}
+
+.swatch-card__image {
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+  display: block;
+}
+
+/* ─── ServiceSelectCard Component ───────────────────────────────────────────
+   White bg, 1px gold border, 10px radius, 12px padding, horizontal layout.
+   Text block (flex:1): name 14px/500/20px primary, subtitle 11px/400/15px secondary.
+   Thumbnail: 40×40px, 8px radius, right-aligned.
+─────────────────────────────────────────────────────────────────────────── */
+.service-select-card {
+  background: white;
+  border-radius: 10px;
+  outline: 1px solid #A8791F;
+  outline-offset: -1px;
+  padding-right: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  text-align: left;
+}
+.service-select-card:hover { opacity: 0.82; }
+
+.service-select-card__text {
+  flex: 1 1 0;
+  overflow: hidden;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px 18px;
+  gap: 4px;
+}
+
+.service-select-card__title {
+  font-family: var(--font);
+  font-size: var(--fs-body-medium);
+  font-weight: var(--fw-body-medium);
+  line-height: var(--lh-body-medium);
+  color: var(--text-primary);
+  word-wrap: break-word;
+}
+
+.service-select-card__desc {
+  align-self: stretch;
+  font-family: var(--font);
+  font-size: var(--fs-caption);
+  font-weight: 400;
+  line-height: var(--lh-caption);
+  color: var(--text-secondary);
+  word-wrap: break-word;
+}
+
+.service-select-card__image {
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* ─── MenuCard Component ─────────────────────────────────────────────────────
+   White bg, 1px gold border, 20px radius, 12px padding, centered column.
+   Icon: 24×24px SVG from icons folder, text-primary fill.
+   Label: 12px/500/16px, text-primary, centered.
+─────────────────────────────────────────────────────────────────────────── */
+.menu-card {
+  background: var(--fill-primary);
+  border: 1px solid var(--border-action);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  width: 100%;
+}
+.menu-card:hover { opacity: 0.82; }
+
+.menu-card__icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.menu-card__icon img,
+.menu-card__icon svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--text-primary);
+  color: var(--text-primary);
+  display: block;
+}
+
+.menu-card__label {
+  width: 100%;
+  text-align: center;
+  font-family: var(--font);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  line-height: var(--lh-label);
+  color: var(--text-primary);
+  word-wrap: break-word;
+}
+
+/* ─── ServiceListRow Component ───────────────────────────────────────────────
+   White bg, 1px gold border, 10px radius, 12px h-pad, 10px v-pad, horizontal.
+   Name: flex:1, 12px/500/16px, text-primary.
+   Price: 11px/400/15px, text-secondary, right-aligned.
+─────────────────────────────────────────────────────────────────────────── */
+.service-list-row {
+  background: #FFFFFF;
+  outline: 1px solid #A8791F;
+  outline-offset: -1px;
+  border: none;
+  border-radius: 10px;
+  padding: 18px 16px;
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.service-list-row:hover { opacity: 0.82; }
+
+
+.service-card-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.service-detail-meta {
+  width: 100%;
+  text-align: center;
+  padding: 4px 0;
+}
+
+.service-detail-meta__link {
+  font-family: proxima-nova, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #848180;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.service-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.service-list-cta {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.service-list-meta {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  font-family: proxima-nova, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #848180;
+  text-align: center;
+  white-space: nowrap;
+  cursor: default;
+  margin: 0;
+  padding: 0;
+}
+
+.service-list-meta__link {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #848180;
+  font-family: proxima-nova, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.service-list-row__name {
+  flex: 1 1 0;
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-body);
+  color: var(--text-primary);
+  word-wrap: break-word;
+  text-align: left;
+}
+
+.service-list-row__price {
+  font-family: var(--font);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  line-height: var(--lh-label);
+  color: var(--text-secondary);
+  text-align: right;
+  word-wrap: break-word;
+  flex-shrink: 0;
+}
+
+/* ─── SelectionChip Component ────────────────────────────────────────────────
+   3 states: Default, Selected, Disabled. Full pill, 12px h-pad, 6px v-pad.
+   Default:  white bg, 1px gold border,        14px/400, text-primary.
+   Selected: sage bg,  1.5px olive border,      14px/500, text-on-sage + ✓ checkmark.
+   Disabled: input-fill bg, 1px divider border, 14px/400, text-disabled.
+─────────────────────────────────────────────────────────────────────────── */
+.selection-chip {
+  padding: 16px 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-body);
+  text-align: center;
+  word-wrap: break-word;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  white-space: nowrap;
+}
+.selection-chip:hover:not(.selection-chip--disabled) { opacity: 0.82; }
+
+/* Default — white bg, gold border, primary text */
+.selection-chip--default {
+  background: var(--fill-primary);
+  border-color: var(--border-action);
+  color: var(--text-primary);
+}
+
+/* Selected — sage bg, 1.5px olive border, dark-sage text + checkmark, semibold */
+.selection-chip--selected {
+  background: var(--btn-fill-sage);
+  border: 1.5px solid var(--btn-border);
+  color: var(--text-on-sage);
+  font-weight: var(--fw-body-medium);
+}
+.selection-chip--selected::after {
+  content: '✓';
+  font-size: var(--fs-body-medium);
+  font-weight: var(--fw-body-medium);
+  line-height: var(--lh-body-medium);
+  color: var(--text-on-sage);
+}
+
+/* Disabled — input-fill bg, divider border, muted text, non-interactive */
+.selection-chip--disabled {
+  background: var(--input-fill);
+  border-color: var(--border-tray);
+  color: var(--text-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ─── ContactCard Component ──────────────────────────────────────────────────
+   White bg, 1px gold border, 10px radius, 12px padding, column flex, gap 8px.
+   3 contact rows (phone, text, address) separated by 1px dividers.
+   Each row: 24×24 icon + text block (14px/500/20px primary + 11px/400/15px secondary).
+   Address row: subtitle has inline external-link icon (14×14) after the text.
+─────────────────────────────────────────────────────────────────────────── */
+.contact-card {
+  background: var(--fill-primary);
+  border: 1px solid var(--border-action);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+
+.contact-card__divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border-tray);
+  flex-shrink: 0;
+}
+
+/* Contact row — icon + text block */
+.contact-card__row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.contact-card__icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+.contact-card__icon img,
+.contact-card__icon svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--text-primary);
+  color: var(--text-primary);
+  display: block;
+}
+
+.contact-card__text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.contact-card__label {
+  font-family: var(--font);
+  font-size: var(--fs-body-medium);
+  font-weight: var(--fw-body-medium);
+  line-height: var(--lh-body-medium);
+  color: var(--text-primary);
+  word-wrap: break-word;
+}
+
+.contact-card__sublabel {
+  font-family: var(--font);
+  font-size: var(--fs-caption);
+  font-weight: 400;
+  line-height: var(--lh-caption);
+  color: var(--text-secondary);
+  word-wrap: break-word;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* External link icon next to address — 14×14px */
+.contact-card__ext-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.contact-card__ext-icon img,
+.contact-card__ext-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--text-secondary);
+  color: var(--text-secondary);
+  display: block;
+}
+
+/* ─── HairLengthVisualCard Component ────────────────────────────────────────
+   White bg, 1px gold border, 10px radius, 12px padding, horizontal layout, gap 12px.
+   Left: 96px wide illustration image, stretches to card height.
+   Right: 5 length rows, each with 24px horizontal tick line + label.
+   Tick: 24×1px, secondary color. Label: 11px/400/14px, secondary, Proxima Nova.
+─────────────────────────────────────────────────────────────────────────── */
+.hair-length-card {
+  background: var(--fill-primary);
+  border: 1px solid var(--border-action);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.hair-length-card__image {
+  width: 123px;
+  height: 123px;
+  object-fit: cover;
+  flex-shrink: 0;
+  display: block;
+  border-radius: 10px;
+}
+
+.hair-length-card__labels {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.hair-length-card__row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+}
+
+/* Horizontal tick line — 24×1px, secondary color */
+.hair-length-card__tick {
+  width: 24px;
+  height: 1px;
+  background: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.hair-length-card__label {
+  font-family: var(--font);
+  font-size: var(--fs-caption);
+  font-weight: 400;
+  line-height: var(--lh-caption);
+  color: var(--text-secondary);
+  word-wrap: break-word;
+}
+
+/* ─── BookingConfirmedHero Component ─────────────────────────────────────────
+   No bg, no border. 12px padding, centered column, gap 6px.
+   Check circle: 36×36px pill, 1.5px olive border, ✓ in olive 20px/700/28px.
+   Title: 16px/600/22px, text-primary, centered.
+   Subtitle: 14px/400/20px, text-secondary, centered.
+─────────────────────────────────────────────────────────────────────────── */
+.booking-confirmed-hero {
+  padding: 12px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+}
+
+.booking-confirmed-hero__header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Check circle — 36×36px, 1.5px olive border, olive ✓ */
+.booking-confirmed-hero__check {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--btn-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.booking-confirmed-hero__check-mark {
+  font-family: var(--font);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  color: var(--btn-border);
+  text-align: center;
+}
+
+.booking-confirmed-hero__title {
+  width: 100%;
+  text-align: center;
+  font-family: var(--font);
+  font-size: var(--fs-heading);
+  font-weight: 600;
+  line-height: var(--lh-heading);
+  color: var(--text-primary);
+  word-wrap: break-word;
+}
+
+.booking-confirmed-hero__subtitle {
+  width: 100%;
+  text-align: center;
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-body);
+  color: var(--text-secondary);
+  word-wrap: break-word;
+}
+
+/* ─── SalonLocationCard Component ───────────────────────────────────────────
+   White bg, 1px gold border, 10px radius, 12px padding, horizontal, gap 12px.
+   Left: 24×24 location icon (text-primary fill).
+   Right (flex:1, gap 6px):
+     - Location label: 14px/400/20px, text-secondary.
+     - Address row: 14px/500/20px text-primary + 14×14 external icon.
+     - Maps link row: 11px/400/15px text-primary + 14×14 external icon.
+─────────────────────────────────────────────────────────────────────────── */
+.salon-location-card {
+  background: var(--fill-primary);
+  border: 1px solid var(--border-action);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.salon-location-card__icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.salon-location-card__icon img,
+.salon-location-card__icon svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--text-primary);
+  color: var(--text-primary);
+  display: block;
+}
+
+.salon-location-card__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  overflow: hidden;
+}
+
+/* "Rosan Hair Address" — body/500, secondary */
+.salon-location-card__label {
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-body);
+  color: var(--text-secondary);
+  word-wrap: break-word;
+}
+
+/* Address + "Open in Maps" share the same inline row pattern */
+.salon-location-card__row {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Address text — body-medium/600, primary */
+.salon-location-card__address {
+  font-family: var(--font);
+  font-size: var(--fs-body-medium);
+  font-weight: var(--fw-body-medium);
+  line-height: var(--lh-body-medium);
+  color: var(--text-primary);
+  word-wrap: break-word;
+}
+
+/* "Open in Maps" — caption/400, primary */
+.salon-location-card__maps-link {
+  font-family: var(--font);
+  font-size: var(--fs-caption);
+  font-weight: 400;
+  line-height: var(--lh-caption);
+  color: var(--text-primary);
+  word-wrap: break-word;
+  cursor: pointer;
+}
+
+/* External link icon — 14×14px, secondary fill */
+.salon-location-card__ext-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.salon-location-card__ext-icon img,
+.salon-location-card__ext-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--text-secondary);
+  color: var(--text-secondary);
+  display: block;
+}
+
+/* ─── PhotoHelpCard Component ────────────────────────────────────────────────
+   White bg, 1px gold border, 10px radius, 12px padding, column flex, gap 8px.
+   Top row: 24×24 icon + text block (14px/500/20px primary + 11px/400/15px secondary).
+   Bottom row: right-aligned CTA "Text us a photo" (10px/400/14px primary) + 12×12 arrow icon.
+─────────────────────────────────────────────────────────────────────────── */
+.photo-help-card {
+  background: var(--fill-primary);
+  outline: 1px solid var(--border-action);
+  outline-offset: -1px;
+  border-radius: var(--radius-md);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.photo-help-card:hover { opacity: 0.82; }
+
+/* Top row — icon + text */
+.photo-help-card__top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.photo-help-card__icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.photo-help-card__icon img,
+.photo-help-card__icon svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--text-primary);
+  color: var(--text-primary);
+  display: block;
+}
+
+.photo-help-card__text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.photo-help-card__title {
+  font-family: var(--font);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+  color: var(--text-primary);
+  word-wrap: break-word;
+}
+
+.photo-help-card__subtitle {
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  color: var(--text-secondary);
+  word-wrap: break-word;
+}
+
+/* Bottom row — right-aligned CTA + arrow */
+.photo-help-card__cta {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.photo-help-card__cta-text {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  color: var(--text-primary);
+  text-align: right;
+  word-wrap: break-word;
+}
+
+/* Arrow icon — 12×12px, primary fill */
+.photo-help-card__arrow {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.photo-help-card__arrow img,
+.photo-help-card__arrow svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--text-primary);
+  color: var(--text-primary);
+  display: block;
+}
+
+/* ─── MatchStyleCard Group Wrapper ──────────────────────────────────────────
+   Outer frame that stacks multiple MatchStyleCards into one compound component.
+   1px gold border, 20px radius, overflow hidden (clips card corners).
+   First card shows heading + badge; subsequent cards set .match-style-card--no-title
+   and .match-style-card--no-badge to hide those elements.
+
+   Usage:
+   <div class="match-style-card-group">
+     <div class="match-style-card">...</div>                          ← first: shows heading + badge
+     <div class="match-style-card match-style-card--no-title">...</div> ← rest: no heading/badge
+   </div>
+─────────────────────────────────────────────────────────────────────────── */
+.match-style-card-group {
+  border-radius: 10px;
+  outline: 1px solid #A8791F;
+  outline-offset: -1px;
+  padding-bottom: 16px;
+  background: var(--fill-primary);
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* ─── MatchStyleCard Component ───────────────────────────────────────────────
+   White bg, no border. Padding: 12px top/left/right (no bottom). Column, gap 12px.
+   Heading: "MATCHES YOUR STYLE" 14px/500/20px secondary (caps in content).
+   Content row: thumbnail (36×36, 6px radius) + service name (14px/500/20px primary)
+     + "Best match" badge (rust bg, 20px radius, 10px/400/14px light text + icon).
+     Right side: "See more looks" (10px/400/14px secondary) + 12px arrow, bottom-aligned.
+   Bottom divider: 1px border-tray.
+─────────────────────────────────────────────────────────────────────────── */
+.match-style-card {
+  background: var(--fill-primary);
+  padding: 14px 14px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.match-style-card__content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  overflow: hidden;
+}
+
+/* "WORTH DISCOVERING" heading */
+.match-style-card__heading {
+  font-family: var(--font);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  line-height: var(--lh-label);
+  color: var(--text-secondary);
+  word-wrap: break-word;
+}
+
+/* Main row — left group + right "see more" */
+.match-style-card__row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+}
+
+/* Left group — thumbnail + name + badge */
+.match-style-card__left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.match-style-card__thumb {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.match-style-card__service {
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-body);
+  color: var(--text-primary);
+  word-wrap: break-word;
+  white-space: nowrap;
+}
+
+/* "Best match" badge — sage fill, rust outline, 200px radius */
+.match-style-card__badge {
+  padding: 2px 4px;
+  background: var(--btn-fill-sage);
+  outline: 1px solid #7A3B32;
+  outline-offset: -1px;
+  border-radius: 200px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.match-style-card__badge-text {
+  font-family: var(--font);
+  font-size: var(--fs-micro);
+  font-weight: 400;
+  line-height: var(--lh-micro);
+  color: var(--text-primary);
+  word-wrap: break-word;
+}
+.match-style-card__badge-icon {
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.match-style-card__badge-icon img,
+.match-style-card__badge-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--text-on-rust);
+  color: var(--text-on-rust);
+  display: block;
+}
+
+/* Right — "See more looks" + arrow, bottom-aligned, pushes to end */
+.match-style-card__right {
+  flex: 1;
+  align-self: stretch;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.match-style-card__see-more {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.match-style-card__see-more:hover { opacity: 0.75; }
+.match-style-card__see-more-text {
+  font-family: var(--font);
+  font-size: var(--fs-micro);
+  font-weight: 400;
+  line-height: var(--lh-micro);
+  color: var(--text-secondary);
+  word-wrap: break-word;
+  white-space: nowrap;
+}
+.match-style-card__see-more-arrow {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.match-style-card__see-more-arrow img,
+.match-style-card__see-more-arrow svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--text-secondary);
+  color: var(--text-secondary);
+  display: block;
+}
+
+.match-style-card__divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border-tray);
+  flex-shrink: 0;
+}
+
+/* Modifiers for subsequent cards in a group — hide heading and/or badge */
+.match-style-card--no-title .match-style-card__heading { display: none; }
+.match-style-card--no-badge .match-style-card__badge   { display: none; }
+
+/* ─── DayCell Component (Figma: DayCell set 162:11) ─────────────────────────
+   5 states: Empty, Default, Today, Selected, Unavailable.
+   All cells: 40×40px, 20px radius, centered 14px/20px text.
+   Selected label is weight 700; all others 400.
+─────────────────────────────────────────────────────────────────────────── */
+.day-cell {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-btn);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-body);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+/* Empty — no text, no bg, no interaction */
+.day-cell--empty {
+  pointer-events: none;
+  cursor: default;
+}
+
+/* Default — dark text, no bg/border */
+.day-cell--default {
+  color: var(--text-primary);
+}
+.day-cell--default:hover { background: var(--bg-canvas); }
+
+/* Today — dark text, 1.5px border, no bg */
+.day-cell--today {
+  color: var(--text-primary);
+  border: 1.5px solid var(--border-bubble);
+}
+.day-cell--today:hover { background: var(--bg-canvas); }
+
+/* Selected — sage bg, no border, dark-sage text, bold Archivo */
+.day-cell--selected {
+  background: var(--btn-fill-sage);
+  color: var(--text-on-sage);
+  font-family: var(--font);
+  font-weight: 700;
+}
+
+/* Unavailable — disabled text, no bg/border, non-interactive */
+.day-cell--unavailable {
+  color: var(--text-disabled);
+  pointer-events: none;
+  cursor: default;
+}
+
+/* ─── CalendarCard Component (Figma: CalendarCard 163:2) ────────────────────
+   White bg, 1px #C7C7C7 border, 10px radius, 8px h-pad, 16px v-pad, gap 8px.
+   Header: month title 16px/600/22px + 32×32 canvas-bg nav buttons.
+   Weekday row: 7 × 40px cols, 11px/400/15px secondary text.
+   Date grid: 5 rows × 7 day cells.
+─────────────────────────────────────────────────────────────────────────── */
+.calendar-card {
+  background: var(--fill-primary);
+  border: 1px solid var(--border-tray);
+  border-radius: var(--radius-md);
+  padding: 16px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+/* Header row — prev/next nav + month label */
+.calendar-card__header {
+  width: 100%;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cal-nav-btn {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  border-radius: var(--radius-btn);
+  background: var(--bg-canvas);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 14px;
+  transition: opacity 0.15s;
+}
+.cal-nav-btn:hover { opacity: 0.75; }
+.cal-nav-btn img {
+  filter: brightness(0) saturate(100%) invert(52%) sepia(6%) saturate(524%) hue-rotate(13deg) brightness(96%) contrast(85%);
+}
+
+.calendar-card__month {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font);
+  font-size: var(--fs-heading);
+  font-weight: 600;
+  line-height: var(--lh-heading);
+  color: var(--text-primary);
+  word-wrap: break-word;
+}
+
+/* Divider */
+.calendar-card__divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border-tray);
+  flex-shrink: 0;
+}
+
+/* Weekday header row — S M T W T F S */
+.calendar-card__weekdays {
+  width: 100%;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.calendar-card__weekday {
+  width: 48px;
+  height: 28px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font);
+  font-size: var(--fs-caption);
+  font-weight: 400;
+  line-height: var(--lh-caption);
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+/* Date grid — 5 rows of 7 day cells */
+.calendar-card__grid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.calendar-card__week {
+  width: 100%;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ─── LabelButton Component (Figma: LabelButton set 161:8) ─────────────────
+   5 variants: Default, Secondary, Focused, Disabled, Ghost.
+   Full pill (200px radius), 12px padding, 12/16 type, centered.
+─────────────────────────────────────────────────────────────────────────── */
+.label-btn {
+  width: 100%;
+  padding: 20px 18px;
+  min-height: 60px;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  font-family: var(--font);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  line-height: var(--lh-label);
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  word-wrap: break-word;
+}
+.label-btn:hover:not(.label-btn--disabled):not(.label-btn--ghost) { opacity: 0.82; }
+
+/* Default — white bg, olive border, dark text */
+.label-btn--default {
+  background: var(--fill-primary);
+  border-color: var(--btn-border);
+  color: var(--text-primary);
+}
+
+/* Secondary — white bg, gold border, dark text (resting/unselected chip) */
+.label-btn--secondary {
+  background: var(--fill-primary);
+  border-color: var(--border-action);
+  color: var(--text-primary);
+}
+
+/* Focused — sage fill, olive border, dark-sage text (selected state) */
+.label-btn--focused {
+  background: var(--btn-fill-sage);
+  border-color: var(--btn-border);
+  color: var(--text-on-sage);
+}
+
+/* Disabled — input-fill bg, divider border, muted text; non-interactive */
+.label-btn--disabled {
+  background: var(--input-fill);
+  border-color: var(--border-tray);
+  color: var(--text-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Ghost — no bg, no border, no explicit color (inherits from context) */
+.label-btn--ghost {
+  background: transparent;
+  border-color: transparent;
+  color: inherit;
+}
+
+/* ─── Button Component (Figma: Button set 152:6) ────────────────────────────
+   All variants: 44px tall, 12px padding, 20px radius, centered label.
+   Outline uses border (1px) matching Figma outline-offset: -1px behaviour.
+   Font: Proxima Nova. Weight 500, size 14px, lh 20px.
+─────────────────────────────────────────────────────────────────────────── */
+.btn-component {
+  width: 100%;
+  min-height: 62px;
+  padding: 20px 18px;
+  border-radius: var(--radius-btn);
+  border: 1px solid transparent;
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-body);
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  word-wrap: break-word;
+}
+.btn-component:hover:not(:disabled) { opacity: 0.82; }
+
+/* Primary — white bg, olive border, dark text */
+.btn-component--primary {
+  background: var(--fill-primary);
+  border-color: var(--btn-border);
+  color: var(--text-primary);
+}
+
+/* Action — rust bg + outline, canvas text (advanced/strong CTA state) */
+.btn-component--action {
+  background: var(--rust);
+  border-color: transparent;
+  outline: 1px solid var(--rust);
+  outline-offset: -1px;
+  color: var(--text-on-rust);
+}
+
+/* Secondary — sage fill, olive border, dark-sage text */
+.btn-component--secondary {
+  background: var(--btn-fill-sage);
+  border-color: var(--btn-border);
+  color: var(--text-on-sage);
+}
+
+/* Disabled — white bg, olive border, disabled text; non-interactive */
+.btn-component--disabled,
+.btn-component:disabled {
+  background: var(--fill-primary);
+  border-color: var(--btn-border);
+  color: var(--text-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Service-select tray grid ── */
+.tray-service-select-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  width: 100%;
+}
+
+.tray-service-select-grid .label-btn {
+  width: 100%;
+  height: 40px;
+  justify-content: center;
+}
+
+
+/* ── Tray meta hint (e.g. "Not sure? Pick the closest one.") ── */
+.tray-meta-hint {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  text-align: center;
+  width: 100%;
+}
+
+/* ── Color swatch grid (natural_color tray) ── */
+.tray-color-swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  width: 100%;
+}
+
+.color-swatch-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 8px;
+  background: white;
+  border-radius: 10px;
+  outline: 1px solid #A8791F;
+  outline-offset: -1px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.color-swatch-card:hover { opacity: 0.82; }
+
+.color-swatch-card__image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.color-swatch-card__label {
+  font-family: var(--font);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  line-height: var(--lh-label);
+  color: var(--text-primary);
+  text-align: center;
+  word-wrap: break-word;
+}
+
+/* ── Thread note — Typography/caption ── */
+.thread-note {
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 15px;
+  color: var(--text-secondary);
+  text-align: center;
+  padding: 0 12px;
+  word-wrap: break-word;
+}
+
+/* ── Tray caption — Typography/caption ────────────────────────────────────── */
+.tray-caption {
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 15px;
+  color: var(--text-secondary);
+  text-align: center;
+  width: 100%;
+}
+
+/* ── Stylist tray grid — 2-row horizontal scroll ───────────────────────────── */
+.stylist-tray-grid {
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 8px) / 2);
+  gap: 8px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 2px;
+  width: 100%;
+}
+
+/* Snap at the start of every first card in a 2-column page (4 cards per snap) */
+.stylist-tray-card:nth-child(4n+1) {
+  scroll-snap-align: start;
+}
+.stylist-tray-grid::-webkit-scrollbar { display: none; }
+
+.stylist-tray-card {
+  background: var(--fill-primary);
+  outline: 1px solid var(--border-action);
+  outline-offset: -1px;
+  border-radius: 10px;
+  padding: 14px 12px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.stylist-tray-card--match {
+  outline: 1.5px dashed var(--border-action);
+  justify-content: center;
+  min-height: 160px;
+}
+
+.stylist-tray-card__match-label {
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-body);
+  color: var(--text-secondary);
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.stylist-tray-card__img {
+  align-self: stretch;
+  height: 117px;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center 20%;
+  background-color: var(--input-fill);
+  flex-shrink: 0;
+}
+
+.stylist-tray-card__body {
+  align-self: stretch;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stylist-tray-card__name {
+  align-self: stretch;
+  font-family: var(--font);
+  font-size: var(--fs-body-medium);
+  font-weight: var(--fw-body-medium);
+  line-height: var(--lh-body-medium);
+  color: var(--text-primary);
+  word-wrap: break-word;
+}
+
+.stylist-tray-card__tier {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-canvas);
+  border-radius: 200px;
+  padding: 3px 8px;
+  font-family: var(--font);
+  font-size: var(--fs-caption);
+  font-weight: 400;
+  line-height: var(--lh-caption);
+  color: var(--text-secondary);
+  align-self: flex-start;
+  overflow: hidden;
+}
+
+.stylist-tray-card__spec {
+  align-self: stretch;
+  font-family: var(--font);
+  font-size: var(--fs-caption);
+  font-weight: 400;
+  line-height: var(--lh-caption);
+  color: var(--text-secondary);
+  word-wrap: break-word;
+}
+
+@keyframes slideDownFromTop {
+  from { transform: translateY(-100%); }
+  to   { transform: translateY(0); }
+}
+.stylist-sheet-wrapper {
+  animation: slideDownFromTop 0.32s cubic-bezier(0.32, 0, 0.67, 1) both;
+}
+
+@keyframes slideUpToTop {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-100%); }
+}
+.stylist-sheet-wrapper--exit {
+  animation: slideUpToTop 0.28s cubic-bezier(0.33, 1, 0.68, 1) both;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   WEBSITE REDESIGN — "Rosan hair website mock" Figma frame
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Header overrides ──────────────────────────────────────────────────── */
+.site-header {
+  background: #F2F2F1;
+  border-bottom: none;
+}
+.site-header__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 42px;
+  height: 109px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo — Ephesis script + David Libre subtitle, rust color */
+.ws-logo {
+  display: flex;
+  flex-direction: column;
+  color: #7A3B32;
+  text-decoration: none;
+  line-height: 1;
+}
+.ws-logo__rosan {
+  font-family: 'Ephesis', cursive;
+  font-size: 72px;
+  letter-spacing: -0.03em;
+  line-height: 0.85;
+}
+.ws-logo__studio {
+  font-family: 'David Libre', Georgia, serif;
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  margin-left: 14px;
+  line-height: 1.1;
+}
+
+/* Center logo image */
+.ws-logo-center {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Nav — 20px Proxima Nova, dark brown */
+.ws-nav {
+  display: flex;
+  gap: 0;
+}
+.ws-nav a {
+  padding: 10px;
+  font-family: proxima-nova, 'Proxima Nova', system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: #2B211D;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.ws-nav a:hover { opacity: 0.6; }
+
+/* Hide old site nav/logo */
+.site-logo, .site-nav, .nav-book { display: none; }
+
+/* ─── Hero ──────────────────────────────────────────────────────────────── */
+/* Override old hero */
+.hero {
+  background: #E8E6E2;
+  height: 647px;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+.hero__inner, .hero__title, .hero__sub, .btn-site-primary { display: none; }
+
+.ws-hero {
+  background: #E8E6E2;
+  height: 647px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Main photo — woman with flowing hair, left ~72% */
+.ws-hero__photo-main {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 2;
+}
+.ws-hero__photo-main > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+.ws-hero__filter--main {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, rgba(224,108,92,0.24) 3%, rgba(122,59,50,0.48) 58%);
+}
+
+/* Salon interior photo — right 55%, overlaps with main */
+.ws-hero__photo-salon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 55%;
+  height: 100%;
+  overflow: hidden;
+}
+.ws-hero__photo-salon > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  opacity: 0.7;
+}
+.ws-hero__filter--salon {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(102deg, rgba(122,59,50,0.28) 59%, rgba(224,108,92,0.2) 74%);
+}
+.ws-hero__blur-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 8px;
+  height: 100%;
+  backdrop-filter: blur(2px);
+  background: rgba(232,230,226,0.02);
+}
+
+/* "Chat to Book" tab — fixed to top-right, always visible on scroll */
+.ws-hero__chat-tab {
+  position: fixed;
+  top: 140px;
+  right: 0;
+  background: #FFFFFF;
+  border: 2px solid #5F5B4A;
+  border-right: none;
+  padding: 16px 12px;
+  font-family: proxima-nova, 'Proxima Nova', system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 38px;
+  color: #2B211D;
+  cursor: pointer;
+  white-space: nowrap;
+  z-index: 98;
+  transition: opacity 0.15s;
+}
+.ws-hero__chat-tab:hover { opacity: 0.85; }
+
+/* ─── Belief / Lookbook ─────────────────────────────────────────────────── */
+.ws-belief {
+  background: #E8E6E2;
+  overflow: hidden;
+}
+
+.ws-belief__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  min-height: 700px;
+}
+
+/* Watermark — desktop default */
+.ws-belief__watermark {
+  position: absolute;
+  top: 64px;
+  left: 92px;
+  font-family: 'David Libre', Georgia, serif;
+  font-size: 140px;
+  font-weight: 500;
+  color: #D5D3D2;
+  letter-spacing: 5.60px;
+  text-transform: uppercase;
+  line-height: 48px;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+/* Rust shadow block — desktop only */
+.ws-belief__rust {
+  position: absolute;
+  left: 50px;
+  top: 267px;
+  width: 464px;
+  height: 388px;
+  background: #7A3B32;
+  z-index: 1;
+}
+
+/* White text card — desktop */
+.ws-belief__text {
+  position: absolute;
+  left: 42px;
+  top: 259px;
+  width: 464px;
+  height: 388px;
+  background: #FFFFFF;
+  overflow: hidden;
+  z-index: 2;
+}
+.ws-belief__text p {
+  position: absolute;
+  left: 24px;
+  top: 104px;
+  width: 416px;
+  font-family: proxima-nova, 'Proxima Nova', system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #2B211D;
+  line-height: 30px;
+  word-wrap: break-word;
+}
+
+/* Collage image — desktop, right side */
+.ws-belief__collage {
+  position: absolute;
+  right: 0;
+  top: 107px;
+  width: 58%;
+  z-index: 1;
+}
+.ws-belief__collage img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── Mobile breakpoint (390px) ── */
+@media (max-width: 768px) {
+  .ws-belief {
+    background: #F2F2F1;
+  }
+
+  .ws-belief__inner {
+    min-height: 530px;
+  }
+
+  .ws-belief__watermark {
+    top: 15px;
+    left: 0;
+    font-size: 86px;
+    letter-spacing: 3.44px;
+    line-height: 48px;
+  }
+
+  .ws-belief__rust {
+    display: none;
+  }
+
+  .ws-belief__text {
+    left: 39px;
+    top: 221px;
+    width: 333px;
+    height: 289px;
+  }
+
+  .ws-belief__text p {
+    top: 40px;
+    width: 285px;
+    font-size: 16px;
+  }
+
+  .ws-belief__collage {
+    right: 0;
+    top: 80px;
+    width: 55%;
+  }
+}
+
+/* ─── Services (photo grid) ─────────────────────────────────────────────── */
+.ws-services {
+  background: #E8E6E2;
+  overflow: hidden;
+}
+
+.ws-services__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  padding-bottom: 120px;
+}
+
+/* Watermark — desktop */
+.ws-services__watermark {
+  position: absolute;
+  top: 47px;
+  left: 332px;
+  font-family: 'David Libre', Georgia, serif;
+  font-size: 140px;
+  font-weight: 500;
+  color: #D5D3D2;
+  letter-spacing: 5.60px;
+  text-transform: uppercase;
+  line-height: 48px;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  z-index: 0;
+}
+
+/* Desktop grid — absolute positioning */
+.ws-services__grid {
+  position: relative;
+  height: 1000px;
+}
+
+/* Rust accent blocks — mobile only */
+.ws-services__rust-accent {
+  display: none;
+}
+
+/* Each item */
+.ws-services__item {
+  position: absolute;
+}
+.ws-services__item img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Label chip — overlaps bottom of photo */
+.ws-services__label {
+  position: absolute;
+  left: 110px;
+  top: 270px;
+  width: 220px;
+  padding: 24px 36px;
+  background: #FFFFFF;
+  font-family: 'David Libre', Georgia, serif;
+  font-size: 42px;
+  font-weight: 400;
+  color: #000000;
+  line-height: 1.1;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+/* Desktop item positions */
+.ws-services__item--cut      { left: 42px;  top: 67px; }
+.ws-services__item--haircare { left: 42px;  top: 507px; }
+.ws-services__item--perm     { left: 433px; top: 337px; }
+.ws-services__item--color    { left: 823px; top: 127px; }
+.ws-services__item--scalp    { left: 823px; top: 620px; }
+
+/* ── Mobile breakpoint (390px) ── */
+@media (max-width: 768px) {
+  .ws-services {
+    background: #F2F2F1;
+  }
+
+  .ws-services__inner {
+    padding: 49px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ws-services__watermark {
+    position: static;
+    align-self: stretch;
+    font-size: 86px;
+    letter-spacing: 3.44px;
+    line-height: 48px;
+    padding-left: 0;
+    margin-bottom: 42px;
+  }
+
+  .ws-services__grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 42px;
+    height: auto;
+    width: 100%;
+  }
+
+  /* Show rust accent blocks on mobile */
+  .ws-services__rust-accent {
+    display: block;
+    width: 300px;
+    height: 300px;
+    background: #7A3B32;
+    flex-shrink: 0;
+  }
+
+  /* Items stack — no absolute positioning */
+  .ws-services__item {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ws-services__item img {
+    width: 300px;
+    height: 300px;
+  }
+
+  /* Label flows below image on mobile */
+  .ws-services__label {
+    position: static;
+    width: 220px;
+  }
+}
+
+/* ─── Contact ───────────────────────────────────────────────────────────── */
+.ws-contact {
+  background: #E8E6E2;
+  overflow: visible;
+}
+
+.ws-contact__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  min-height: 560px;
+}
+
+.ws-contact__watermark {
+  position: absolute;
+  top: 16px;
+  left: 65px;
+  font-family: 'David Libre', Georgia, serif;
+  font-size: 140px;
+  font-weight: 500;
+  color: #D5D3D2;
+  letter-spacing: 5.60px;
+  text-transform: uppercase;
+  line-height: 48px;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  z-index: 0;
+}
+
+/* Desktop: map left, info right, both 600px */
+.ws-contact__layout {
+  position: absolute;
+  top: 102px;
+  left: 0;
+  right: 0;
+  height: 440px;
+  display: flex;
+  flex-direction: row-reverse; /* info left in HTML but right visually on desktop */
+  z-index: 1;
+}
+
+.ws-contact__map {
+  flex: 0 0 50%;
+  position: relative;
+  overflow: hidden;
+  order: 1;
+}
+.ws-contact__map img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.ws-contact__map-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.61);
+  mix-blend-mode: color;
+}
+
+/* Info panel */
+.ws-contact__info {
+  flex: 0 0 50%;
+  background: #2B211D;
+  color: #E8E6E2;
+  display: flex;
+  flex-direction: column;
+  order: 2;
+}
+
+.ws-contact__row {
+  display: flex;
+  gap: 56px;
+  padding: 24px 42px;
+  border-bottom: 0.2px solid #F2F2F1;
+  align-items: center;
+  flex: 1;
+}
+.ws-contact__row--address {
+  align-items: flex-start;
+  flex: none;
+}
+.ws-contact__row:last-child { border-bottom: none; }
+
+.ws-contact__label {
+  font-family: proxima-nova, 'Proxima Nova', system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  flex-shrink: 0;
+  min-width: 60px;
+  color: #E8E6E2;
+}
+
+.ws-contact__value {
+  font-family: proxima-nova, 'Proxima Nova', system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #E8E6E2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.ws-contact__subs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ws-contact__sub {
+  font-size: 12px;
+  font-weight: 400;
+  color: #E8E6E2;
+}
+
+/* ── Mobile breakpoint ── */
+@media (max-width: 768px) {
+  .ws-contact__inner {
+    padding-top: 48px;
+    min-height: auto;
+  }
+
+  .ws-contact__watermark {
+    position: static;
+    display: block;
+    font-size: 86px;
+    letter-spacing: 3.44px;
+    line-height: 48px;
+    margin-bottom: 0;
+  }
+
+  .ws-contact__layout {
+    position: static;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .ws-contact__info {
+    flex: none;
+    height: 440px;
+    order: 1;
+  }
+
+  .ws-contact__map {
+    flex: none;
+    height: 440px;
+    order: 2;
+  }
+}
+
+/* ─── Footer ────────────────────────────────────────────────────────────── */
+/* Override old footer */
+.site-footer {
+  background: #1E1E1E;
+  color: #FFFFFF;
+  height: 116px;
+  padding: 0;
+  border-top: none;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.ws-footer {
+  background: #1E1E1E;
+  height: 116px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ws-footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 42px;
+  height: 55px;
+}
+
+.ws-footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.ws-footer__brand img {
+  display: block;
+  flex-shrink: 0;
+}
+.ws-footer__brand-name {
+  display: flex;
+  flex-direction: column;
+  color: #FFFFFF;
+}
+.ws-footer__rosan {
+  font-family: 'Ephesis', cursive;
+  font-size: 32px;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: #FFFFFF;
+}
+.ws-footer__studio {
+  font-family: 'David Libre', Georgia, serif;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+  margin-left: 3px;
+  line-height: 1.1;
+}
+
+.ws-footer__nav {
+  display: flex;
+  gap: 0;
+}
+.ws-footer__nav a {
+  padding: 10px;
+  font-family: proxima-nova, 'Proxima Nova', system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+.ws-footer__nav a:hover { opacity: 0.7; }
+
+.ws-footer__copy {
+  font-family: 'David Libre', Georgia, serif;
+  font-size: 8px;
+  font-weight: 500;
+  color: #FFFFFF;
+  padding: 0 12px;
+  letter-spacing: -0.03em;
+}
+
+/* ─── Chat launcher — updated style to match new branding ───────────────── */
+.chat-launcher {
+  background: #2B211D;
+  color: #FFFFFF;
+  border-radius: 200px;
+  font-family: proxima-nova, 'Proxima Nova', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+.chat-launcher:hover { opacity: 0.85; }

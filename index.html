@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rosan Hair Studio — NYC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ephesis&family=David+Libre:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.typekit.net/zlb4skl.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ── Header ── -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="ws-logo" href="#">
+        <span class="ws-logo__rosan">Rosan</span>
+        <span class="ws-logo__studio">Hair Studio</span>
+      </a>
+      <img class="ws-logo-center" src="https://www.figma.com/api/mcp/asset/511e6611-e552-4e57-927d-6fa9d276f08a" alt="Rosan Hair Studio">
+      <nav class="ws-nav">
+        <a href="#">Services</a>
+        <a href="#">Stylists</a>
+        <a href="#">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── Hero ── -->
+    <section class="ws-hero">
+      <div class="ws-hero__photo-main">
+        <img src="images/hero image.png" alt="">
+        <div class="ws-hero__filter ws-hero__filter--main"></div>
+      </div>
+      <!-- Hero chat-to-book tab — opens chatbot -->
+      <button class="ws-hero__chat-tab js-open-chat">Chat to Book</button>
+    </section>
+
+    <!-- ── Belief / Lookbook ── -->
+    <section class="ws-belief">
+      <div class="ws-belief__inner">
+        <div class="ws-belief__watermark">BelieF</div>
+        <div class="ws-belief__rust"></div>
+        <div class="ws-belief__text">
+          <p>We're dedicated to find the best look for you. Each service started with a real conversation about your hair, your habits, and what you're ready for. Every cut, color, and treatment is shaped around your hair as it is, so you leave with something you'll actually want to live in.</p>
+        </div>
+        <div class="ws-belief__collage">
+          <img src="images/site-img-belief.png" alt="">
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Services (photo grid) ── -->
+    <section class="ws-services">
+      <div class="ws-services__inner">
+        <div class="ws-services__watermark">Services</div>
+        <div class="ws-services__grid">
+
+          <div class="ws-services__item ws-services__item--cut">
+            <img src="images/img- service -cut.png" alt="">
+            <div class="ws-services__label">Cut</div>
+          </div>
+
+          <div class="ws-services__item ws-services__item--haircare">
+            <img src="images/img- service -haircare.png" alt="">
+            <div class="ws-services__label">Hair care</div>
+          </div>
+
+          <div class="ws-services__item ws-services__item--perm">
+            <img src="images/img- service -perm.png" alt="">
+            <div class="ws-services__label">Perm</div>
+          </div>
+
+          <div class="ws-services__item ws-services__item--color">
+            <img src="images/img- service -color.png" alt="">
+            <div class="ws-services__label">Color</div>
+          </div>
+
+          <div class="ws-services__item ws-services__item--scalp">
+            <img src="images/img-service -scalpcare.png" alt="">
+            <div class="ws-services__label">Scalp care</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Contact ── -->
+    <section class="ws-contact">
+      <div class="ws-contact__inner">
+        <div class="ws-contact__watermark">Contact</div>
+        <div class="ws-contact__layout">
+          <!-- Info panel first (shows on top on mobile) -->
+          <div class="ws-contact__info">
+            <div class="ws-contact__row ws-contact__row--address">
+              <span class="ws-contact__label">Address</span>
+              <div class="ws-contact__value">
+                <span>3090 Patterson Road, NY 10001</span>
+                <div class="ws-contact__subs">
+                  <span class="ws-contact__sub">8 min walk from the station at Prince Street</span>
+                  <span class="ws-contact__sub">Use the exit 4 at the station for the R line or exit 2 for W Line trains</span>
+                </div>
+              </div>
+            </div>
+            <div class="ws-contact__row">
+              <span class="ws-contact__label">Tel/text</span>
+              <span class="ws-contact__value">+1 (212) 658-3916</span>
+            </div>
+            <div class="ws-contact__row">
+              <span class="ws-contact__label">Hours</span>
+              <span class="ws-contact__value">Mon-Sat · 11am-9pm</span>
+            </div>
+            <div class="ws-contact__row">
+              <span class="ws-contact__label">Email</span>
+              <span class="ws-contact__value">rosanhair@outlook.com</span>
+            </div>
+          </div>
+          <!-- Map (right on desktop, bottom on mobile) -->
+          <div class="ws-contact__map">
+            <img src="images/map - salon location.png" alt="Salon location map">
+            <div class="ws-contact__map-overlay"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="ws-footer">
+    <div class="ws-footer__inner">
+      <div class="ws-footer__brand">
+        <img src="https://www.figma.com/api/mcp/asset/21c299c5-6b42-4748-aef2-c8342f5843e8" alt="Logo" width="26" height="26">
+        <div class="ws-footer__brand-name">
+          <span class="ws-footer__rosan">Rosan</span>
+          <span class="ws-footer__studio">Hair Studio</span>
+        </div>
+      </div>
+      <nav class="ws-footer__nav">
+        <a href="#">Services</a>
+        <a href="#">Stylists</a>
+        <a href="#">About</a>
+      </nav>
+    </div>
+    <p class="ws-footer__copy">© Rosan NY</p>
+  </footer>
+
+
+  <!-- ── Chat widget (structure must stay intact — chatbot.js depends on these IDs) ── -->
+  <div class="chat-widget" id="chat-widget" aria-hidden="true" role="dialog" aria-label="Rosan Hair Studio chat">
+
+    <div class="app-header-bar" id="chat-header">
+      <button class="app-header-bar__back" id="header-back" style="visibility: hidden;" aria-label="Back">
+        <span class="app-header-bar__back-icon"><img src="images/icons/CaretLeft.svg" width="12" height="12" alt=""></span>
+        <span class="app-header-bar__back-label">Back</span>
+      </button>
+      <div class="app-header-bar__center">
+        <div class="app-header-bar__title" id="chat-title">Chat with Rosan Hair</div>
+        <div class="app-header-bar__subtitle" id="chat-subtitle"></div>
+      </div>
+      <div class="app-header-bar__step-counter" id="chat-step-counter" style="visibility:hidden;"></div>
+      <button class="app-header-bar__close js-close-chat" aria-label="Close chat">
+        <div class="app-header-bar__close-icon"><img src="images/icons/X.svg" width="24" height="24" alt=""></div>
+      </button>
+    </div>
+
+    <div class="chat-thread" id="chat-thread" role="log" aria-live="polite"></div>
+    <div class="chat-tray" id="chat-tray"></div>
+
+  </div>
+
+  <script src="flow-data.js"></script>
+  <script src="chatbot.js"></script>
+</body>
+</html>
